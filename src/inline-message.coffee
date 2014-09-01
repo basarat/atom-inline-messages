@@ -1,6 +1,4 @@
-{ Point
-, View
-} = require 'atom'
+{ View } = require 'atom'
 
 module.exports =
   class MessageBubble extends View
