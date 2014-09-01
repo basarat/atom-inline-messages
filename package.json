@@ -1,10 +1,11 @@
 {
   "name": "atom-inline-messages",
-  "main": "./dist/inline-messages",
-  "version": "0.1.2",
+  "main": "dist/inline-messages",
+  "version": "0.1.3",
   "description": "Inline Messaging in the Atom Editor",
   "repository": "https://github.com/mdgriffith/atom-inline-messages",
   "license": "MIT",
+  "author":"mdgriffith",
   "engines": {
     "atom": ">0.50.0"
   },
