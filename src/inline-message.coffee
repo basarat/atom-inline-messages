@@ -39,7 +39,6 @@ module.exports =
         lastPos = @editorView.pixelPositionForBufferPosition({row:line, column:start})
         top = fstPos.top
         left = lastPos.left
-        console.log start
         # if left < 640
           # left = 640
         # left = left + 25
@@ -50,13 +49,13 @@ module.exports =
       this.find(".message-content").remove()
       msgs = ""
       for msg in @messages
-        if msg.src == lastSrc
-          body = "<div class='message-body'>#{msg.content}</div>"
-          content = "<div class='message-content'>#{body}</div>"
-        else
-          src = "<div class='message-source'>#{msg.src}</div>"
-          body = "<div class='message-body'>#{msg.content}</div>"
-          content = "<div class='message-content'>#{src}#{body}</div>"
+        # if msg.src == lastSrc
+        #   body = "<div class='message-body'>#{msg.content}</div>"
+        #   content = "<div class='message-content'>#{body}</div>"
+        # else
+        src = "<div class='message-source'>#{msg.src}</div>"
+        body = "<div class='message-body'>#{msg.content}</div>"
+        content = "<div class='message-content'>#{src}#{body}</div>"
         lastSrc = msg.src
         msgs = msgs + content
       this.append msgs

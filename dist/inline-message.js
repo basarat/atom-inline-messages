@@ -85,7 +85,6 @@ module.exports = MessageBubble = (function(_super) {
       });
       top = fstPos.top;
       left = lastPos.left;
-      console.log(start);
       return "position:absolute;left:" + left + "px;top:" + top + "px;";
     }
   };
@@ -98,14 +97,9 @@ module.exports = MessageBubble = (function(_super) {
     _ref = this.messages;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       msg = _ref[_i];
-      if (msg.src === lastSrc) {
-        body = "<div class='message-body'>" + msg.content + "</div>";
-        content = "<div class='message-content'>" + body + "</div>";
-      } else {
-        src = "<div class='message-source'>" + msg.src + "</div>";
-        body = "<div class='message-body'>" + msg.content + "</div>";
-        content = "<div class='message-content'>" + src + body + "</div>";
-      }
+      src = "<div class='message-source'>" + msg.src + "</div>";
+      body = "<div class='message-body'>" + msg.content + "</div>";
+      content = "<div class='message-content'>" + src + body + "</div>";
       lastSrc = msg.src;
       msgs = msgs + content;
     }
