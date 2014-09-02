@@ -21,7 +21,7 @@ module.exports =
       @editor = editor
       @editorView = editorView
       @messages = [{content:@content, src:@title}]
-      style = @calculateStyle(@line,@end)
+      style = @calculateStyle(@line,@start)
       super({messages:@messages,klass:@klass, style:style})
 
       if @min
@@ -32,16 +32,17 @@ module.exports =
       if pageData
         pageData.first().prepend(this)
 
-    calculateStyle:(line, last) ->
+    calculateStyle:(line, start) ->
       if @editorView and @editor
         last = @editor.getBuffer().lineLengthForRow(line)
-        fstPos = @editorView.pixelPositionForBufferPosition({row:line,column:0})
-        lastPos = @editorView.pixelPositionForBufferPosition({row:line, column:last})
+        fstPos = @editorView.pixelPositionForBufferPosition({row:line+1,column:0})
+        lastPos = @editorView.pixelPositionForBufferPosition({row:line, column:start})
         top = fstPos.top
         left = lastPos.left
-        if left < 640
-          left = 640
-        left = left + 25
+        console.log start
+        # if left < 640
+          # left = 640
+        # left = left + 25
         return "position:absolute;left:#{left}px;top:#{top}px;"
 
     update: () ->

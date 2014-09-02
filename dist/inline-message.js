@@ -55,7 +55,7 @@ module.exports = MessageBubble = (function(_super) {
         src: this.title
       }
     ];
-    style = this.calculateStyle(this.line, this.end);
+    style = this.calculateStyle(this.line, this.start);
     MessageBubble.__super__.constructor.call(this, {
       messages: this.messages,
       klass: this.klass,
@@ -71,24 +71,21 @@ module.exports = MessageBubble = (function(_super) {
     }
   }
 
-  MessageBubble.prototype.calculateStyle = function(line, last) {
-    var fstPos, lastPos, left, top;
+  MessageBubble.prototype.calculateStyle = function(line, start) {
+    var fstPos, last, lastPos, left, top;
     if (this.editorView && this.editor) {
       last = this.editor.getBuffer().lineLengthForRow(line);
       fstPos = this.editorView.pixelPositionForBufferPosition({
-        row: line,
+        row: line + 1,
         column: 0
       });
       lastPos = this.editorView.pixelPositionForBufferPosition({
         row: line,
-        column: last
+        column: start
       });
       top = fstPos.top;
       left = lastPos.left;
-      if (left < 640) {
-        left = 640;
-      }
-      left = left + 25;
+      console.log(start);
       return "position:absolute;left:" + left + "px;top:" + top + "px;";
     }
   };
